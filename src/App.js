@@ -1,5 +1,7 @@
-import React, { Component } from 'react'
-import { Drawer, List, NavBar, Icon } from 'antd-mobile'
+import React from 'react'
+import { Drawer, NavBar, Icon } from 'antd-mobile'
+
+// eslint-disable-next-line
 import styles from './App.css'
 
 import MainMenu from './ui/components/MainMenu'
