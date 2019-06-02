@@ -2,7 +2,7 @@
   "name": "task-list",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://tuner88.github.io/task-planer/",
+  "homepage": "https://tp.pauli.cloud/",
   "dependencies": {
     "@babel/core": "7.4.3",
     "@svgr/webpack": "4.1.0",
