@@ -4,7 +4,7 @@ import ProjectList from '../components/ProjectList'
 import { selectProject } from '../actions'
 
 const mapStateToProps = state => ({
-  projects: state.projects
+  projects: Object.values(state.projects)
 })
 
 const mapDispatchToProps = dispatch => ({

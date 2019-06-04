@@ -1,10 +1,17 @@
 import React from 'react'
-import { List, Progress } from 'antd-mobile'
+import { List, Progress, Badge } from 'antd-mobile'
 
 const Item = List.Item
 const Brief = Item.Brief
 
-const Project = ({ id, progress, title, selectProject }) => {
+const Project = ({
+  id,
+  progress,
+  title,
+  selectProject,
+  taskCount,
+  completedTaskCount
+}) => {
   return (
     <Item
       arrow="horizontal"
@@ -15,6 +22,9 @@ const Project = ({ id, progress, title, selectProject }) => {
       {title}
       <Brief>Next task: </Brief>
       <Brief>Project ends: </Brief>
+      <Badge selected>
+        {completedTaskCount} / {taskCount}
+      </Badge>
       <Progress percent={progress} position="normal" />
     </Item>
   )

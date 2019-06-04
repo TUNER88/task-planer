@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { List, SearchBar } from 'antd-mobile'
+import { Button, List, SearchBar, WhiteSpace, WingBlank } from 'antd-mobile'
 
 import Task from '../containers/Task'
 
@@ -31,16 +31,17 @@ export default class ProjectList extends Component {
 
   render() {
     const tasks = this.getTasks()
+    const { projectTitle } = this.props
 
     return (
       <>
         <SearchBar
           placeholder="Search"
           maxLength={8}
-          cancelText={'cancel'}
+          cancelText={'Cancel'}
           onChange={this.onSearch}
         />
-        <List renderHeader={() => 'Tasks'}>
+        <List renderHeader={() => projectTitle}>
           {tasks.map((task, index) => (
             <Task
               key={index}
@@ -50,6 +51,10 @@ export default class ProjectList extends Component {
             />
           ))}
         </List>
+        <WingBlank>
+          <WhiteSpace />
+          <Button type={'primary'}>Add new</Button>
+        </WingBlank>
       </>
     )
   }

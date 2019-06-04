@@ -4,19 +4,25 @@ import Project from '../components/Project'
 import { selectProject } from '../actions'
 
 const getProject = (state, id) => {
-  return state.projects.find(p => p.id === id)
+  return state.projects[id]
 }
 
-const getProgress = (state, id) => {
+const getProgressDetails = (state, id) => {
   const tasks = Object.values(state.tasks)
   const projectTasks = tasks.filter(t => t.projectId === id)
   const completedTasks = projectTasks.filter(t => t.completed).length
-  return (completedTasks / projectTasks.length) * 100 || 0
+  const progress = (completedTasks / projectTasks.length) * 100 || 0
+
+  return {
+    taskCount: projectTasks.length,
+    completedTaskCount: completedTasks,
+    progress
+  }
 }
 
 const mapStateToProps = (state, props) => ({
   ...getProject(state, props.id),
-  progress: getProgress(state, props.id)
+  ...getProgressDetails(state, props.id)
 })
 
 const mapDispatchToProps = dispatch => ({
