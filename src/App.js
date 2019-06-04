@@ -1,6 +1,8 @@
 import React from 'react'
 import { Drawer, NavBar, Icon } from 'antd-mobile'
 
+import initialState from './config/initialState'
+
 // eslint-disable-next-line
 import styles from './App.css'
 
@@ -9,7 +11,13 @@ import ProjectList from './ui/components/ProjectList'
 import TaskList from './ui/components/TaskList'
 
 class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.setActiveProject = this.setActiveProject.bind(this)
+  }
+
   state = {
+    ...initialState,
     docked: false
   }
   onDock = d => {
@@ -17,7 +25,21 @@ class App extends React.Component {
       [d]: !this.state[d]
     })
   }
+
+  setActiveProject(index) {
+    this.setState({
+      ...this.state,
+      ui: {
+        ...this.state.ui,
+        activeProject: index
+      }
+    })
+  }
+
   render() {
+    const { projects } = this.state.data
+    const activeProject = projects[this.state.ui.activeProject]
+
     return (
       <div style={{ height: '100%' }}>
         <NavBar
@@ -36,10 +58,13 @@ class App extends React.Component {
         >
           <div className={'main-area'}>
             <div className={'left-column'}>
-              <ProjectList />
+              <ProjectList
+                projects={projects}
+                setActiveProject={this.setActiveProject}
+              />
             </div>
             <div className={'right-column'}>
-              <TaskList />
+              <TaskList tasks={activeProject.tasks} />
             </div>
           </div>
         </Drawer>

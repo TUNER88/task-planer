@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { List, Icon } from 'antd-mobile'
 
 export default class MainMenu extends Component {
-
   render() {
     return (
       <List>

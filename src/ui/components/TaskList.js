@@ -1,29 +1,14 @@
 import React, { Component } from 'react'
-import { Checkbox, List, SearchBar } from 'antd-mobile'
+import PropTypes from 'prop-types'
+import { List, SearchBar } from 'antd-mobile'
 
-const Item = List.Item
-const Brief = Item.Brief
-const CheckboxItem = Checkbox.CheckboxItem
+import Task from './Task'
 
 export default class ProjectList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      titleFilter: undefined,
-      tasks: [
-        {
-          title: 'Task 1',
-          progress: Math.floor(Math.random() * 100 + 1)
-        },
-        {
-          title: 'Task 2',
-          progress: Math.floor(Math.random() * 100 + 1)
-        },
-        {
-          title: 'Task 3',
-          progress: Math.floor(Math.random() * 100 + 1)
-        }
-      ]
+      titleFilter: undefined
     }
 
     this.onSearch = this.onSearch.bind(this)
@@ -36,7 +21,8 @@ export default class ProjectList extends Component {
   }
 
   getTasks() {
-    const { titleFilter, tasks } = this.state
+    const { titleFilter } = this.state
+    const { tasks } = this.props
 
     if (!titleFilter) return tasks
 
@@ -44,6 +30,8 @@ export default class ProjectList extends Component {
   }
 
   render() {
+    const tasks = this.getTasks()
+
     return (
       <>
         <SearchBar
@@ -53,11 +41,8 @@ export default class ProjectList extends Component {
           onChange={this.onSearch}
         />
         <List renderHeader={() => 'Tasks'}>
-          {this.getTasks().map((task, index) => (
-            <CheckboxItem key={index} arrow="down">
-              {task.title}
-              <Brief>subtitle</Brief>
-            </CheckboxItem>
+          {tasks.map((task, index) => (
+            <Task key={index} completed={task.completed} title={task.title} />
           ))}
         </List>
       </>
@@ -65,7 +50,14 @@ export default class ProjectList extends Component {
   }
 }
 
-ProjectList.propTypes = {}
+ProjectList.propTypes = {
+  tasks: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string,
+      completed: PropTypes.bool
+    })
+  )
+}
 
 ProjectList.defaultProps = {}
 
