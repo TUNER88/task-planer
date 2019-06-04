@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { List, SearchBar } from 'antd-mobile'
 
-import Task from './Task'
+import Task from '../containers/Task'
 
 export default class ProjectList extends Component {
   constructor(props) {
@@ -42,7 +42,12 @@ export default class ProjectList extends Component {
         />
         <List renderHeader={() => 'Tasks'}>
           {tasks.map((task, index) => (
-            <Task key={index} completed={task.completed} title={task.title} />
+            <Task
+              key={index}
+              id={task.id}
+              completed={task.completed}
+              title={task.title}
+            />
           ))}
         </List>
       </>

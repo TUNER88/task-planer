@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Button, List, Progress, WingBlank, WhiteSpace } from 'antd-mobile'
+import { Button, List, WingBlank, WhiteSpace } from 'antd-mobile'
 
-const Item = List.Item
-const Brief = Item.Brief
+import Project from '../containers/Project'
 
 export default class TaskList extends Component {
   constructor(props) {
@@ -13,32 +12,12 @@ export default class TaskList extends Component {
     }
   }
 
-  getProjectProgress(project) {
-    const completedTasks = project.tasks.filter(task => task.completed).length
-    return (completedTasks / project.tasks.length) * 100 || 0
-  }
-
   render() {
-    const { setActiveProject } = this.props
     return (
       <>
         <List renderHeader={() => 'Projects'}>
           {this.state.projects.map((project, index) => (
-            <Item
-              key={index}
-              arrow="horizontal"
-              onClick={() => {
-                setActiveProject(index)
-              }}
-            >
-              {project.title}
-              <Brief>Next task: </Brief>
-              <Brief>Project ends: </Brief>
-              <Progress
-                percent={this.getProjectProgress(project)}
-                position="normal"
-              />
-            </Item>
+            <Project key={index} id={project.id} />
           ))}
         </List>
         <WingBlank>

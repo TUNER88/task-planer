@@ -6,9 +6,9 @@ import initialState from './config/initialState'
 // eslint-disable-next-line
 import styles from './App.css'
 
-import MainMenu from './ui/components/MainMenu'
-import ProjectList from './ui/components/ProjectList'
-import TaskList from './ui/components/TaskList'
+import MainMenu from './components/MainMenu'
+import ProjectList from './containers/ProjectList'
+import TaskList from './containers/TaskList'
 
 class App extends React.Component {
   constructor(props) {
@@ -37,9 +37,6 @@ class App extends React.Component {
   }
 
   render() {
-    const { projects } = this.state.data
-    const activeProject = projects[this.state.ui.activeProject]
-
     return (
       <div style={{ height: '100%' }}>
         <NavBar
@@ -58,13 +55,10 @@ class App extends React.Component {
         >
           <div className={'main-area'}>
             <div className={'left-column'}>
-              <ProjectList
-                projects={projects}
-                setActiveProject={this.setActiveProject}
-              />
+              <ProjectList setActiveProject={this.setActiveProject} />
             </div>
             <div className={'right-column'}>
-              <TaskList tasks={activeProject.tasks} />
+              <TaskList />
             </div>
           </div>
         </Drawer>
