@@ -6,7 +6,14 @@ const Item = List.Item
 const Brief = Item.Brief
 const CheckboxItem = Checkbox.CheckboxItem
 
-const Task = ({ id, completed, title, toggleTaskCompletion }) => {
+const Task = ({
+  id,
+  completed,
+  title,
+  toggleTaskCompletion,
+  startTime,
+  endTime
+}) => {
   const toggle = () => {
     toggleTaskCompletion(id)
   }
@@ -15,6 +22,8 @@ const Task = ({ id, completed, title, toggleTaskCompletion }) => {
     <CheckboxItem arrow="down" defaultChecked={completed} onChange={toggle}>
       {title}
       <Brief>subtitle</Brief>
+      <Brief>Start time: {startTime ? startTime.toLocaleString() : '-'}</Brief>
+      <Brief>End time: {endTime ? endTime.toLocaleString() : '-'}</Brief>
     </CheckboxItem>
   )
 }

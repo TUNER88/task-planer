@@ -26,13 +26,17 @@ const initialState = {
       id: 1,
       projectId: 1,
       title: 'Task 1',
-      completed: true
+      completed: true,
+      startTime: new Date('2019-06-18T03:24:00'),
+      endTime: new Date('2019-06-18T04:24:00')
     },
     2: {
       id: 2,
       projectId: 1,
       title: 'Task 2',
-      completed: false
+      completed: false,
+      startTime: new Date('2019-06-17T03:24:00'),
+      endTime: new Date('2019-06-17T04:24:00')
     },
     3: {
       id: 3,
@@ -44,7 +48,9 @@ const initialState = {
       id: 4,
       projectId: 2,
       title: 'Task 4',
-      completed: true
+      completed: true,
+      startTime: new Date('2019-06-17T03:24:00'),
+      endTime: new Date('2019-06-17T04:24:00')
     }
   },
   ui: {

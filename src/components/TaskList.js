@@ -48,6 +48,8 @@ export default class ProjectList extends Component {
               id={task.id}
               completed={task.completed}
               title={task.title}
+              startTime={task.startTime}
+              endTime={task.endTime}
             />
           ))}
         </List>

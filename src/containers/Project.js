@@ -7,9 +7,13 @@ const getProject = (state, id) => {
   return state.projects[id]
 }
 
-const getProgressDetails = (state, id) => {
+const getProjectTasks = (state, id) => {
   const tasks = Object.values(state.tasks)
-  const projectTasks = tasks.filter(t => t.projectId === id)
+  return tasks.filter(t => t.projectId === id)
+}
+
+const getProgressDetails = (state, id) => {
+  const projectTasks = getProjectTasks(state, id)
   const completedTasks = projectTasks.filter(t => t.completed).length
   const progress = (completedTasks / projectTasks.length) * 100 || 0
 
@@ -20,9 +24,21 @@ const getProgressDetails = (state, id) => {
   }
 }
 
+const getNextTaskTime = (state, id) => {
+  const projectTasks = getProjectTasks(state, id)
+  const incompletTasks = projectTasks
+    .filter(t => !t.completed)
+    .sort((a, b) => a.startTime - b.endTime)
+
+  if (incompletTasks.length) {
+    return incompletTasks[0].startTime
+  }
+}
+
 const mapStateToProps = (state, props) => ({
   ...getProject(state, props.id),
-  ...getProgressDetails(state, props.id)
+  ...getProgressDetails(state, props.id),
+  nextTaskTime: getNextTaskTime(state, props.id)
 })
 
 const mapDispatchToProps = dispatch => ({

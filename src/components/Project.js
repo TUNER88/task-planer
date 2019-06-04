@@ -10,7 +10,8 @@ const Project = ({
   title,
   selectProject,
   taskCount,
-  completedTaskCount
+  completedTaskCount,
+  nextTaskTime
 }) => {
   return (
     <Item
@@ -20,7 +21,9 @@ const Project = ({
       }}
     >
       {title}
-      <Brief>Next task: </Brief>
+      <Brief>
+        Next task: {nextTaskTime ? nextTaskTime.toLocaleString() : '-'}
+      </Brief>
       <Brief>Project ends: </Brief>
       <Badge selected>
         {completedTaskCount} / {taskCount}
