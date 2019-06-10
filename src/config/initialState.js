@@ -1,52 +1,56 @@
+const uuid = require('uuid/v1')
+
+const uuids = {
+  p1: uuid(),
+  p2: uuid(),
+  p3: uuid(),
+  t1: uuid(),
+  t2: uuid(),
+  t3: uuid(),
+  t4: uuid()
+}
+
 const initialState = {
   projects: {
-    1: {
-      id: 1,
-      title: 'Project 1',
-      nextTask: '03. June',
-      end: '03. June'
+    [uuids.p1]: {
+      id: uuids.p1,
+      title: 'Project 1'
     },
-    2: {
-      id: 2,
-      title: 'Project 2',
-      nextTask: '03. June',
-      end: '03. June',
-      tasks: []
+    [uuids.p2]: {
+      id: uuids.p2,
+      title: 'Project 2'
     },
-    3: {
-      id: 3,
-      title: 'Project 3',
-      nextTask: '03. June',
-      end: '03. June',
-      tasks: []
+    [uuids.p3]: {
+      id: uuids.p3,
+      title: 'Project 3'
     }
   },
   tasks: {
-    1: {
-      id: 1,
-      projectId: 1,
+    [uuids.t1]: {
+      id: uuids.t1,
+      projectId: uuids.p1,
       title: 'Task 1',
       completed: true,
       startTime: new Date('2019-06-18T03:24:00'),
       endTime: new Date('2019-06-18T04:24:00')
     },
-    2: {
-      id: 2,
-      projectId: 1,
+    [uuids.t2]: {
+      id: uuids.t2,
+      projectId: uuids.p1,
       title: 'Task 2',
       completed: false,
       startTime: new Date('2019-06-17T03:24:00'),
       endTime: new Date('2019-06-17T04:24:00')
     },
-    3: {
-      id: 3,
-      projectId: 1,
+    [uuids.t3]: {
+      id: uuids.t3,
+      projectId: uuids.p1,
       title: 'Task 3',
       completed: true
     },
-    4: {
-      id: 4,
-      projectId: 2,
+    [uuids.t4]: {
+      id: uuids.t4,
+      projectId: uuids.p2,
       title: 'Task 4',
       completed: true,
       startTime: new Date('2019-06-17T03:24:00'),
@@ -54,7 +58,7 @@ const initialState = {
     }
   },
   ui: {
-    activeProject: 1
+    activeProject: uuids.p1
   }
 }
 

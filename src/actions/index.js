@@ -1,8 +1,6 @@
-let nextTodoId = 0
-export const addProject = text => ({
+export const addProject = data => ({
   type: 'ADD_PROJECT',
-  id: nextTodoId++,
-  text
+  data
 })
 
 export const selectProject = id => ({

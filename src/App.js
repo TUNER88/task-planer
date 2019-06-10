@@ -37,8 +37,9 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.props)
     return (
-      <div style={{ height: '100%' }}>
+      <div>
         <NavBar
           icon={<Icon type="ellipsis" />}
           onLeftClick={() => this.onDock('docked')}
