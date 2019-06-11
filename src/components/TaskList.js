@@ -65,9 +65,9 @@ export default class TaskList extends Component {
         />
         {isListVisible && (
           <List renderHeader={() => projectTitle}>
-            {tasks.map((task, index) => (
+            {tasks.map(task => (
               <Task
-                key={index}
+                key={task.id}
                 id={task.id}
                 completed={task.completed}
                 title={task.title}
