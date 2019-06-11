@@ -1,7 +1,6 @@
 const uuid = require('uuid/v1')
 
 const projects = (state = [], action) => {
-  console.log(state, action)
   const newUuid = uuid()
   switch (action.type) {
     case 'ADD_PROJECT':

@@ -12,3 +12,7 @@ export const toggleTaskCompletion = id => ({
   type: 'TOGGLE_TASK_COMPLETION',
   id
 })
+
+export const toggleNewTaskForm = () => ({
+  type: 'TOGGLE_NEW_TASK_FORM'
+})

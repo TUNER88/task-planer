@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom'
 
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import { LocaleProvider } from 'antd-mobile'
+import enUS from 'antd-mobile/lib/locale-provider/en_US'
 
 import './index.css'
 import App from './App'
@@ -19,7 +21,9 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <LocaleProvider locale={enUS}>
+      <App />
+    </LocaleProvider>
   </Provider>,
   document.getElementById('root')
 )

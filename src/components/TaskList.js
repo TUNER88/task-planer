@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import { Button, List, SearchBar, WhiteSpace, WingBlank } from 'antd-mobile'
 
 import Task from '../containers/Task'
+import TaskForm from '../components/Forms/Task'
 
-export default class ProjectList extends Component {
+export default class TaskList extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -29,9 +30,23 @@ export default class ProjectList extends Component {
     return tasks.filter(task => task.title.includes(titleFilter))
   }
 
+  renderNewForm() {
+    return <TaskForm />
+  }
+
   render() {
+    const {
+      projectTitle,
+      toggleNewTaskForm,
+      isFormVisible,
+      isListVisible
+    } = this.props
+
+    if (isFormVisible) {
+      return this.renderNewForm()
+    }
+
     const tasks = this.getTasks()
-    const { projectTitle } = this.props
 
     return (
       <>
@@ -41,28 +56,35 @@ export default class ProjectList extends Component {
           cancelText={'Cancel'}
           onChange={this.onSearch}
         />
-        <List renderHeader={() => projectTitle}>
-          {tasks.map((task, index) => (
-            <Task
-              key={index}
-              id={task.id}
-              completed={task.completed}
-              title={task.title}
-              startTime={task.startTime}
-              endTime={task.endTime}
-            />
-          ))}
-        </List>
+        {isListVisible && (
+          <List renderHeader={() => projectTitle}>
+            {tasks.map((task, index) => (
+              <Task
+                key={index}
+                id={task.id}
+                completed={task.completed}
+                title={task.title}
+                startTime={task.startTime}
+                endTime={task.endTime}
+              />
+            ))}
+          </List>
+        )}
         <WingBlank>
           <WhiteSpace />
-          <Button type={'primary'}>Add new</Button>
+          <Button type={'primary'} onClick={toggleNewTaskForm}>
+            Add new
+          </Button>
         </WingBlank>
       </>
     )
   }
 }
 
-ProjectList.propTypes = {
+TaskList.propTypes = {
+  isFormVisible: PropTypes.bool,
+  isListVisible: PropTypes.bool,
+  toggleNewTaskForm: PropTypes.func,
   tasks: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,
@@ -71,6 +93,6 @@ ProjectList.propTypes = {
   )
 }
 
-ProjectList.defaultProps = {}
+TaskList.defaultProps = {}
 
-ProjectList.displayName = 'ProjectList'
+TaskList.displayName = 'TaskList'

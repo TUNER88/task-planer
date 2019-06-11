@@ -58,7 +58,9 @@ const initialState = {
     }
   },
   ui: {
-    activeProject: uuids.p1
+    activeProject: uuids.p1,
+    showTaskList: true,
+    showNewTaskForm: false
   }
 }
 
