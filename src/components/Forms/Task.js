@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
 import { DateTime } from 'luxon'
 import { List, InputItem, Button, DatePicker, Picker } from 'antd-mobile'
@@ -10,7 +11,7 @@ const REPEAT_MODE_DAILY = 1
 const REPEAT_MODE_WEEKLY = 2
 const REPEAT_MODE_MONTHLY = 3
 
-const Task = () => {
+const Task = ({ addTask, projectId, toggleNewTaskForm }) => {
   const [data, setData] = useState({
     startDate: new Date(),
     duration: DateTime.local()
@@ -39,10 +40,17 @@ const Task = () => {
 
   const setStart = startDate => setData({ ...data, startDate })
   const setDuration = duration => {
-    console.log(duration)
     return setData({ ...data, duration })
   }
   const setTitle = title => setData({ ...data, title })
+
+  const handleSave = () => {
+    addTask({
+      ...data,
+      projectId
+    })
+    toggleNewTaskForm()
+  }
 
   return (
     <List renderHeader={() => 'New Task'}>
@@ -57,18 +65,21 @@ const Task = () => {
         <List.Item arrow="horizontal">Repeat</List.Item>
       </Picker>
       <Item>
-        <Button type="primary" size="small" inline>
-          Submit
+        <Button type="primary" size="small" inline onClick={handleSave}>
+          Save
         </Button>
         <Button size="small" inline style={{ marginLeft: '2.5px' }}>
-          Reset
+          Cancel
         </Button>
       </Item>
     </List>
   )
 }
 
-Task.propTypes = {}
+Task.propTypes = {
+  projectId: PropTypes.string,
+  addTask: PropTypes.func
+}
 
 Task.displayName = 'Task'
 

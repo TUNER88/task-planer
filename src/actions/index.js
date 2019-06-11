@@ -3,6 +3,11 @@ export const addProject = data => ({
   data
 })
 
+export const addTask = data => ({
+  type: 'ADD_TASK',
+  data
+})
+
 export const selectProject = id => ({
   type: 'SELECT_PROJECT',
   id

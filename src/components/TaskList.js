@@ -31,7 +31,14 @@ export default class TaskList extends Component {
   }
 
   renderNewForm() {
-    return <TaskForm />
+    const { addTask, projectId, toggleNewTaskForm } = this.props
+    return (
+      <TaskForm
+        projectId={projectId}
+        addTask={addTask}
+        toggleNewTaskForm={toggleNewTaskForm}
+      />
+    )
   }
 
   render() {
@@ -84,6 +91,7 @@ export default class TaskList extends Component {
 TaskList.propTypes = {
   isFormVisible: PropTypes.bool,
   isListVisible: PropTypes.bool,
+  addTask: PropTypes.func,
   toggleNewTaskForm: PropTypes.func,
   tasks: PropTypes.arrayOf(
     PropTypes.shape({

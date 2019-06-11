@@ -1,3 +1,5 @@
+const uuid = require('uuid/v1')
+
 const ui = (state = {}, action) => {
   switch (action.type) {
     case 'TOGGLE_TASK_COMPLETION':
@@ -7,6 +9,15 @@ const ui = (state = {}, action) => {
         [id]: {
           ...state[id],
           completed: !state[id].completed
+        }
+      }
+    case 'ADD_TASK':
+      const newUuid = uuid()
+      return {
+        ...state,
+        [newUuid]: {
+          id: newUuid,
+          ...action.data
         }
       }
     default:

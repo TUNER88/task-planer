@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
 import TaskList from '../components/TaskList'
-import { toggleNewTaskForm } from '../actions'
+import { addTask, toggleNewTaskForm } from '../actions'
 
 const getProjectTitle = state => {
   const { projects, ui } = state
@@ -14,12 +14,14 @@ const getVisibleTasks = (tasks, projectId) => {
 
 const mapStateToProps = state => ({
   projectTitle: getProjectTitle(state),
+  projectId: state.ui.activeProject,
   tasks: getVisibleTasks(state.tasks, state.ui.activeProject),
   isFormVisible: state.ui.showNewTaskForm,
   isListVisible: state.ui.showTaskList
 })
 
 const mapDispatchToProps = dispatch => ({
+  addTask: data => dispatch(addTask(data)),
   toggleNewTaskForm: () => dispatch(toggleNewTaskForm())
 })
 
