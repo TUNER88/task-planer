@@ -2,7 +2,14 @@ import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
 import { DateTime } from 'luxon'
-import { List, InputItem, Button, DatePicker, Picker } from 'antd-mobile'
+import {
+  List,
+  InputItem,
+  Button,
+  DatePicker,
+  Picker,
+  TextareaItem
+} from 'antd-mobile'
 
 const Item = List.Item
 
@@ -64,6 +71,7 @@ const Task = ({ addTask, projectId, toggleNewTaskForm }) => {
       <Picker data={repeatModes} cols={1} minuteStep={5}>
         <List.Item arrow="horizontal">Repeat</List.Item>
       </Picker>
+      <TextareaItem rows={3} placeholder="Notes" autoHeight />
       <Item>
         <Button type="primary" size="small" inline onClick={handleSave}>
           Save
