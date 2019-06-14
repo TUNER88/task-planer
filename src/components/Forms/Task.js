@@ -76,7 +76,7 @@ const Task = ({ addTask, projectId, toggleNewTaskForm }) => {
         <Button type="primary" size="small" inline onClick={handleSave}>
           Save
         </Button>
-        <Button size="small" inline style={{ marginLeft: '2.5px' }}>
+        <Button onClick={toggleNewTaskForm} size="small" inline style={{ marginLeft: '2.5px' }}>
           Cancel
         </Button>
       </Item>
