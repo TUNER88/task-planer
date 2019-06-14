@@ -14,15 +14,15 @@ const initialState = {
   projects: {
     [uuids.p1]: {
       id: uuids.p1,
-      title: 'Project 1'
+      title: 'Project 1 🚘'
     },
     [uuids.p2]: {
       id: uuids.p2,
-      title: 'Project 2'
+      title: '🔦 Project 2'
     },
     [uuids.p3]: {
       id: uuids.p3,
-      title: 'Project 3'
+      title: 'Project 3 🎁'
     }
   },
   tasks: {

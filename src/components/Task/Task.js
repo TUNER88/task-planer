@@ -2,9 +2,7 @@ import React, { useState, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Checkbox, List } from 'antd-mobile'
 
-const Item = List.Item
-const Brief = Item.Brief
-const CheckboxItem = Checkbox.CheckboxItem
+import Header from './Header'
 
 const Task = ({
   id,
@@ -32,18 +30,14 @@ const Task = ({
   const getArrowDirection = () => (collapsed ? 'down' : 'up')
 
   return (
-    <CheckboxItem
+    <List.Item
       arrow={getArrowDirection()}
-      defaultChecked={completed}
-      onChange={toggle}
       onClick={onClick}
+      thumb={<Checkbox onClick={toggle} defaultChecked={completed} />}
     >
-      {title}
-      <Brief>subtitle</Brief>
-      <Brief>Start time: {startTime ? startTime.toLocaleString() : '-'}</Brief>
-      <Brief>End time: {endTime ? endTime.toLocaleString() : '-'}</Brief>
+      <Header title={title} startTime={startTime} endTime={endTime} />
       {!collapsed && notes && (
-        <Brief>
+        <List.Item.Brief>
           {notes.split('\n').map((item, key) => {
             return (
               <Fragment key={key}>
@@ -52,9 +46,9 @@ const Task = ({
               </Fragment>
             )
           })}
-        </Brief>
+        </List.Item.Brief>
       )}
-    </CheckboxItem>
+    </List.Item>
   )
 }
 
