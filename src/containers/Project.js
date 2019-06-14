@@ -15,12 +15,10 @@ const getProjectTasks = (state, id) => {
 const getProgressDetails = (state, id) => {
   const projectTasks = getProjectTasks(state, id)
   const completedTasks = projectTasks.filter(t => t.completed).length
-  const progress = (completedTasks / projectTasks.length) * 100 || 0
 
   return {
     taskCount: projectTasks.length,
-    completedTaskCount: completedTasks,
-    progress
+    completedTaskCount: completedTasks
   }
 }
 

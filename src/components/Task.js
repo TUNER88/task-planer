@@ -15,7 +15,7 @@ const Task = ({
   startTime,
   endTime
 }) => {
-  const [collapsed, setCollapsed] = useState(false)
+  const [collapsed, setCollapsed] = useState(true)
 
   const toggle = () => {
     toggleTaskCompletion(id)
@@ -26,11 +26,10 @@ const Task = ({
       if (notes) {
         setCollapsed(!collapsed)
       }
-      console.log('onclick', e.target.type)
     }
   }
 
-  const getArrowDirection = () => (collapsed ? 'up' : 'down')
+  const getArrowDirection = () => (collapsed ? 'down' : 'up')
 
   return (
     <CheckboxItem

@@ -1,0 +1,15 @@
+.number {
+    flex: initial;
+    color: #888;
+    font-size: 13px;
+    margin-right: 6px;
+}
+
+.percents {
+    flex: initial;
+    min-width: 45px;
+    text-align: right;
+    color: #888;
+    font-size: 13px;
+    margin-left: 12px;
+}
