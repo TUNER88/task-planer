@@ -50,6 +50,7 @@ const Task = ({ addTask, projectId, toggleNewTaskForm }) => {
     return setData({ ...data, duration })
   }
   const setTitle = title => setData({ ...data, title })
+  const setNotes = notes => setData({ ...data, notes })
 
   const handleSave = () => {
     addTask({
@@ -71,12 +72,23 @@ const Task = ({ addTask, projectId, toggleNewTaskForm }) => {
       <Picker data={repeatModes} cols={1} minuteStep={5}>
         <List.Item arrow="horizontal">Repeat</List.Item>
       </Picker>
-      <TextareaItem rows={3} placeholder="Notes" autoHeight />
+      <TextareaItem
+        value={data.notes}
+        onChange={setNotes}
+        rows={3}
+        placeholder="Notes"
+        autoHeight
+      />
       <Item>
         <Button type="primary" size="small" inline onClick={handleSave}>
           Save
         </Button>
-        <Button onClick={toggleNewTaskForm} size="small" inline style={{ marginLeft: '2.5px' }}>
+        <Button
+          onClick={toggleNewTaskForm}
+          size="small"
+          inline
+          style={{ marginLeft: '2.5px' }}
+        >
           Cancel
         </Button>
       </Item>

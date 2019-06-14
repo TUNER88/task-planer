@@ -32,7 +32,8 @@ const initialState = {
       title: 'Task 1',
       completed: true,
       startTime: new Date('2019-06-18T03:24:00'),
-      endTime: new Date('2019-06-18T04:24:00')
+      endTime: new Date('2019-06-18T04:24:00'),
+      notes: 'Line 1\nLine2'
     },
     [uuids.t2]: {
       id: uuids.t2,

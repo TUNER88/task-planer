@@ -73,6 +73,7 @@ export default class TaskList extends Component {
                 title={task.title}
                 startTime={task.startTime}
                 endTime={task.endTime}
+                notes={task.notes}
               />
             ))}
           </List>
