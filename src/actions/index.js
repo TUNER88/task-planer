@@ -8,6 +8,16 @@ export const addTask = data => ({
   data
 })
 
+export const setTaskFilter = search => ({
+  type: 'SET_TASK_FILTER',
+  search
+})
+
+export const setTaskSortOption = option => ({
+  type: 'SET_TASK_SORT_OPTION',
+  option
+})
+
 export const selectProject = id => ({
   type: 'SELECT_PROJECT',
   id

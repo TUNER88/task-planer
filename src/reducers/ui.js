@@ -5,6 +5,16 @@ const ui = (state = [], action) => {
         ...state,
         activeProject: action.id
       }
+    case 'SET_TASK_SORT_OPTION':
+      return {
+        ...state,
+        taskSortOption: action.option
+      }
+    case 'SET_TASK_FILTER':
+      return {
+        ...state,
+        taskFilter: action.search
+      }
     case 'TOGGLE_NEW_TASK_FORM':
       return {
         ...state,

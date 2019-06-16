@@ -1,3 +1,5 @@
+import taskSortOptions from '../components/TaskFilter/sortOptions'
+
 const uuid = require('uuid/v1')
 
 const uuids = {
@@ -61,7 +63,9 @@ const initialState = {
   ui: {
     activeProject: uuids.p1,
     showTaskList: true,
-    showNewTaskForm: false
+    showNewTaskForm: false,
+    taskFilter: '',
+    taskSortOption: taskSortOptions.NAME
   }
 }
 
