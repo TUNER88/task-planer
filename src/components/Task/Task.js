@@ -2,7 +2,11 @@ import React, { useState, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Checkbox, List, SwipeAction } from 'antd-mobile'
 
+import { IoMdCreate, IoIosTrash } from 'react-icons/io'
+
 import Header from './Header'
+
+import styles from './Task.module.css'
 
 const Task = ({
   id,
@@ -29,6 +33,13 @@ const Task = ({
 
   const getArrowDirection = () => (collapsed ? 'down' : 'up')
 
+  const desktopButtons = (
+    <section className={styles.desktopIcons}>
+      <IoMdCreate />
+      <IoIosTrash />
+    </section>
+  )
+
   return (
     <SwipeAction
       style={{ backgroundColor: 'gray' }}
@@ -50,6 +61,7 @@ const Task = ({
         arrow={getArrowDirection()}
         onClick={onClick}
         thumb={<Checkbox onClick={toggle} defaultChecked={completed} />}
+        extra={desktopButtons}
       >
         <Header title={title} startTime={startTime} endTime={endTime} />
         {!collapsed && notes && (

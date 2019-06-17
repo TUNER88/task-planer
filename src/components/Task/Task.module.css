@@ -1,0 +1,6 @@
+/* smartphones, touchscreens */
+@media (hover: none) and (pointer: coarse) {
+    .desktopIcons {
+        display: none;
+    }
+}
