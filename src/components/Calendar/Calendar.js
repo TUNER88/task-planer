@@ -5,7 +5,7 @@ import moment from 'moment'
 import { Calendar as C, momentLocalizer } from 'react-big-calendar'
 const localizer = momentLocalizer(moment)
 
-const Calendar = ({}) => {
+const Calendar = () => {
   return (
     <div>
       <C
