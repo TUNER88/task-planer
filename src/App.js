@@ -1,5 +1,5 @@
 import React from 'react'
-import { SegmentedControl, NavBar, Icon, TabBar, WingBlank } from 'antd-mobile'
+import { SegmentedControl, NavBar, Icon, WingBlank } from 'antd-mobile'
 import Calendar from './components/Calendar'
 
 import initialState from './config/initialState'
@@ -9,7 +9,6 @@ import 'react-big-calendar/lib/css/react-big-calendar.css'
 // eslint-disable-next-line
 import styles from './App.css'
 
-import MainMenu from './components/MainMenu'
 import ProjectList from './containers/ProjectList'
 import TaskList from './containers/TaskList'
 
@@ -73,7 +72,11 @@ class App extends React.Component {
             </div>
           </div>
         )}
-        {calendarActive && <div className={'main-area'}><Calendar/></div>}
+        {calendarActive && (
+          <div className={'main-area'}>
+            <Calendar />
+          </div>
+        )}
 
         <WingBlank size="lg" className="sc-example">
           <SegmentedControl
