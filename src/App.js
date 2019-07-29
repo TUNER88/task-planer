@@ -1,7 +1,10 @@
 import React from 'react'
 import { SegmentedControl, NavBar, Icon, TabBar, WingBlank } from 'antd-mobile'
+import Calendar from './components/Calendar'
 
 import initialState from './config/initialState'
+
+import 'react-big-calendar/lib/css/react-big-calendar.css'
 
 // eslint-disable-next-line
 import styles from './App.css'
@@ -9,6 +12,9 @@ import styles from './App.css'
 import MainMenu from './components/MainMenu'
 import ProjectList from './containers/ProjectList'
 import TaskList from './containers/TaskList'
+
+const VIEW_LIST = 'List'
+const VIEW_CALENDAR = 'Calendar'
 
 class App extends React.Component {
   constructor(props) {
@@ -18,11 +24,18 @@ class App extends React.Component {
 
   state = {
     ...initialState,
-    docked: false
+    docked: false,
+    activeView: VIEW_LIST
   }
   onDock = d => {
     this.setState({
       [d]: !this.state[d]
+    })
+  }
+
+  onChangeView = event => {
+    this.setState({
+      activeView: event.nativeEvent.value
     })
   }
 
@@ -37,6 +50,10 @@ class App extends React.Component {
   }
 
   render() {
+    const { activeView } = this.state
+    const listActive = activeView === VIEW_LIST
+    const calendarActive = activeView === VIEW_CALENDAR
+
     return (
       <div>
         <NavBar
@@ -46,6 +63,7 @@ class App extends React.Component {
           Task list
         </NavBar>
 
+        {listActive && (
           <div className={'main-area'}>
             <div className={'left-column'}>
               <ProjectList setActiveProject={this.setActiveProject} />
@@ -54,8 +72,14 @@ class App extends React.Component {
               <TaskList />
             </div>
           </div>
+        )}
+        {calendarActive && <div className={'main-area'}><Calendar/></div>}
+
         <WingBlank size="lg" className="sc-example">
-          <SegmentedControl values={['Segment1', 'Segment2']} />
+          <SegmentedControl
+            values={[VIEW_LIST, VIEW_CALENDAR]}
+            onChange={this.onChangeView}
+          />
         </WingBlank>
       </div>
     )

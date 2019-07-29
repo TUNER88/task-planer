@@ -33,9 +33,9 @@ const Task = ({
 
   const getArrowDirection = () => (collapsed ? 'down' : 'up')
 
-  const remove = () => console.log("remove")
-  const edit = (e,f) => {
-    console.log("edit", e,e.target)
+  const remove = () => console.log('remove')
+  const edit = (e, f) => {
+    console.log('edit', e, e.target)
   }
 
   const desktopButtons = (
