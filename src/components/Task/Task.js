@@ -33,9 +33,14 @@ const Task = ({
 
   const getArrowDirection = () => (collapsed ? 'down' : 'up')
 
+  const remove = () => console.log("remove")
+  const edit = (e,f) => {
+    console.log("edit", e,e.target)
+  }
+
   const desktopButtons = (
     <section className={styles.desktopIcons}>
-      <IoMdCreate />
+      <IoMdCreate onClick={edit} />
       <IoIosTrash />
     </section>
   )
@@ -47,12 +52,12 @@ const Task = ({
       right={[
         {
           text: 'Edit',
-          onPress: () => console.log('cancel'),
+          onPress: edit,
           style: { backgroundColor: '#ddd', color: 'white' }
         },
         {
           text: 'Delete',
-          onPress: () => console.log('delete'),
+          onPress: remove,
           style: { backgroundColor: '#F4333C', color: 'white' }
         }
       ]}

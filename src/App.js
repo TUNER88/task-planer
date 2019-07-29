@@ -1,5 +1,5 @@
 import React from 'react'
-import { Drawer, NavBar, Icon } from 'antd-mobile'
+import { SegmentedControl, NavBar, Icon, TabBar, WingBlank } from 'antd-mobile'
 
 import initialState from './config/initialState'
 
@@ -45,14 +45,7 @@ class App extends React.Component {
         >
           Task list
         </NavBar>
-        <Drawer
-          className="my-drawer"
-          style={{ minHeight: document.documentElement.clientHeight }}
-          sidebarStyle={{ border: '1px solid #ddd' }}
-          sidebar={<MainMenu />}
-          open={this.state.docked}
-          docked={false}
-        >
+
           <div className={'main-area'}>
             <div className={'left-column'}>
               <ProjectList setActiveProject={this.setActiveProject} />
@@ -61,7 +54,9 @@ class App extends React.Component {
               <TaskList />
             </div>
           </div>
-        </Drawer>
+        <WingBlank size="lg" className="sc-example">
+          <SegmentedControl values={['Segment1', 'Segment2']} />
+        </WingBlank>
       </div>
     )
   }
