@@ -7,12 +7,13 @@ import styles from './Calendar.module.css'
 
 const localizer = momentLocalizer(moment)
 
-const Calendar = () => {
+const Calendar = ({ events }) => {
+  console.log(events)
   return (
     <div className={styles.container}>
       <C
+        events={events}
         localizer={localizer}
-        events={[]}
         startAccessor="start"
         endAccessor="end"
       />

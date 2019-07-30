@@ -1,6 +1,6 @@
 import React from 'react'
 import { SegmentedControl, NavBar, Icon } from 'antd-mobile'
-import Calendar from './components/Calendar'
+import Calendar from './containers/Calendar'
 
 import initialState from './config/initialState'
 
@@ -12,7 +12,7 @@ import styles from './App.css'
 import ProjectList from './containers/ProjectList'
 import TaskList from './containers/TaskList'
 
-const VIEW_LIST = 'List'
+const VIEW_LIST = 'Projects'
 const VIEW_CALENDAR = 'Calendar'
 
 class App extends React.Component {
@@ -78,14 +78,13 @@ class App extends React.Component {
           </div>
         )}
 
-        <NavBar mode={"light"}>
-            <SegmentedControl
-              values={[VIEW_LIST, VIEW_CALENDAR]}
-              onChange={this.onChangeView}
-              className={'viewSwitch'}
-            />
+        <NavBar mode={'light'}>
+          <SegmentedControl
+            values={[VIEW_CALENDAR, VIEW_LIST]}
+            onChange={this.onChangeView}
+            className={'viewSwitch'}
+          />
         </NavBar>
-
       </div>
     )
   }
