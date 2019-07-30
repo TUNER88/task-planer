@@ -30,4 +30,9 @@
 
 .main-area {
     display: flex;
+    height: calc(100vh - 90px);
+}
+
+.viewSwitch {
+    width: 100%;
 }

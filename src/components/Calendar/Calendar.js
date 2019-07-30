@@ -3,11 +3,13 @@ import React from 'react'
 import moment from 'moment'
 
 import { Calendar as C, momentLocalizer } from 'react-big-calendar'
+import styles from './Calendar.module.css'
+
 const localizer = momentLocalizer(moment)
 
 const Calendar = () => {
   return (
-    <div>
+    <div className={styles.container}>
       <C
         localizer={localizer}
         events={[]}

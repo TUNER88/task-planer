@@ -1,5 +1,5 @@
 import React from 'react'
-import { SegmentedControl, NavBar, Icon, WingBlank } from 'antd-mobile'
+import { SegmentedControl, NavBar, Icon } from 'antd-mobile'
 import Calendar from './components/Calendar'
 
 import initialState from './config/initialState'
@@ -24,7 +24,7 @@ class App extends React.Component {
   state = {
     ...initialState,
     docked: false,
-    activeView: VIEW_LIST
+    activeView: VIEW_CALENDAR
   }
   onDock = d => {
     this.setState({
@@ -78,12 +78,14 @@ class App extends React.Component {
           </div>
         )}
 
-        <WingBlank size="lg" className="sc-example">
-          <SegmentedControl
-            values={[VIEW_LIST, VIEW_CALENDAR]}
-            onChange={this.onChangeView}
-          />
-        </WingBlank>
+        <NavBar mode={"light"}>
+            <SegmentedControl
+              values={[VIEW_LIST, VIEW_CALENDAR]}
+              onChange={this.onChangeView}
+              className={'viewSwitch'}
+            />
+        </NavBar>
+
       </div>
     )
   }
