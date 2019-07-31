@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { List } from 'antd-mobile'
-import { IoIosAdd } from 'react-icons/io'
 
+import AddTaskButton from './AddTaskButton'
 import Task from '../../containers/Task'
 import TaskForm from '../Forms/Task'
 import TaskFilter from '../../containers/TaskFilter'
@@ -46,12 +46,7 @@ const TaskList = ({
               notes={task.notes}
             />
           ))}
-          <List.Item
-            thumb={<IoIosAdd size={'21px'} style={{ color: '#888' }} />}
-            onClick={toggleNewTaskForm}
-          >
-            Add new
-          </List.Item>
+          <AddTaskButton onClick={toggleNewTaskForm} />
         </List>
       )}
     </>
