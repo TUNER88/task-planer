@@ -8,7 +8,6 @@ import styles from './Calendar.module.css'
 const localizer = momentLocalizer(moment)
 
 const Calendar = ({ events }) => {
-  console.log(events)
   return (
     <div className={styles.container}>
       <C

@@ -1,18 +1,3 @@
-.my-drawer {
-    position: relative;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-}
-.my-drawer .am-drawer-sidebar {
-    background-color: #fff;
-    overflow: auto;
-    -webkit-overflow-scrolling: touch;
-}
-.my-drawer .am-drawer-sidebar .am-list {
-    width: 300px;
-    padding: 0;
-}
-
 .left-column {
     width: calc(40% - 1px);
     border-right: 1px solid #ddd;
@@ -24,13 +9,9 @@
     -webkit-overflow-scrolling: touch;
 }
 
-.test {
-    background: red;
-}
-
 .main-area {
     display: flex;
-    height: calc(100vh - 90px);
+    height: calc(100vh - 45px);
 }
 
 .viewSwitch {

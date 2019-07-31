@@ -1,5 +1,5 @@
 import React from 'react'
-import { SegmentedControl, NavBar, Icon } from 'antd-mobile'
+import { NavBar, SegmentedControl } from 'antd-mobile'
 import Calendar from './containers/Calendar'
 
 import initialState from './config/initialState'
@@ -26,11 +26,6 @@ class App extends React.Component {
     docked: false,
     activeView: VIEW_CALENDAR
   }
-  onDock = d => {
-    this.setState({
-      [d]: !this.state[d]
-    })
-  }
 
   onChangeView = event => {
     this.setState({
@@ -55,13 +50,6 @@ class App extends React.Component {
 
     return (
       <div>
-        <NavBar
-          icon={<Icon type="ellipsis" />}
-          onLeftClick={() => this.onDock('docked')}
-        >
-          Task list
-        </NavBar>
-
         {listActive && (
           <div className={'main-area'}>
             <div className={'left-column'}>
