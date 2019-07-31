@@ -11,7 +11,7 @@
 
 .main-area {
     display: flex;
-    height: calc(100vh - 45px);
+    height: calc(100% - 45px);
 }
 
 .viewSwitch {

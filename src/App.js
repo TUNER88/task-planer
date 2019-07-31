@@ -1,5 +1,7 @@
 import React from 'react'
+import Div100vh from 'react-div-100vh'
 import { NavBar, SegmentedControl } from 'antd-mobile'
+
 import Calendar from './containers/Calendar'
 
 import initialState from './config/initialState'
@@ -49,7 +51,7 @@ class App extends React.Component {
     const calendarActive = activeView === VIEW_CALENDAR
 
     return (
-      <div>
+      <Div100vh>
         {listActive && (
           <div className={'main-area'}>
             <div className={'left-column'}>
@@ -73,7 +75,7 @@ class App extends React.Component {
             className={'viewSwitch'}
           />
         </NavBar>
-      </div>
+      </Div100vh>
     )
   }
 }
