@@ -26,7 +26,7 @@ class App extends React.Component {
   state = {
     ...initialState,
     docked: false,
-    activeView: VIEW_CALENDAR
+    activeView: VIEW_LIST
   }
 
   onChangeView = event => {
