@@ -1,13 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Button, Modal } from 'antd-mobile'
+import { Modal } from 'antd-mobile'
+
+import { IoIosAdd } from 'react-icons/io'
 
 const prompt = Modal.prompt
 
-const NewProject = ({ addProject }) => {
+const NewProject = ({ addProject, className, size }) => {
   return (
-    <Button
-      type={'primary'}
+    <IoIosAdd
+      className={className}
+      size={size}
       onClick={() =>
         prompt('New project', 'Enter project name', [
           { text: 'Cancel' },
@@ -17,9 +20,7 @@ const NewProject = ({ addProject }) => {
           }
         ])
       }
-    >
-      Add new
-    </Button>
+    />
   )
 }
 
