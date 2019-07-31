@@ -13,9 +13,11 @@ import styles from './App.css'
 
 import ProjectList from './containers/ProjectList'
 import TaskList from './containers/TaskList'
+import Overview from './containers/Overview'
 
-const VIEW_LIST = 'Projects'
+const VIEW_PROJECTS = 'Projects'
 const VIEW_CALENDAR = 'Calendar'
+const VIEW_TASKS = 'Tasks'
 
 class App extends React.Component {
   constructor(props) {
@@ -26,7 +28,7 @@ class App extends React.Component {
   state = {
     ...initialState,
     docked: false,
-    activeView: VIEW_LIST
+    activeView: VIEW_TASKS
   }
 
   onChangeView = event => {
@@ -47,32 +49,35 @@ class App extends React.Component {
 
   render() {
     const { activeView } = this.state
-    const listActive = activeView === VIEW_LIST
+    const listActive = activeView === VIEW_PROJECTS
     const calendarActive = activeView === VIEW_CALENDAR
+    const overviewActive = activeView === VIEW_TASKS
+
+    const views = [VIEW_CALENDAR, VIEW_PROJECTS, VIEW_TASKS]
 
     return (
       <Div100vh>
-        {listActive && (
-          <div className={'main-area'}>
-            <div className={'left-column'}>
-              <ProjectList setActiveProject={this.setActiveProject} />
-            </div>
-            <div className={'right-column'}>
-              <TaskList />
-            </div>
-          </div>
-        )}
-        {calendarActive && (
-          <div className={'main-area'}>
-            <Calendar />
-          </div>
-        )}
+        <div className={'main-area'}>
+          {listActive && (
+            <>
+              <div className={'left-column'}>
+                <ProjectList setActiveProject={this.setActiveProject} />
+              </div>
+              <div className={'right-column'}>
+                <TaskList />
+              </div>
+            </>
+          )}
+          {calendarActive && <Calendar />}
+          {overviewActive && <div className={'overview'}><Overview /></div>}
+        </div>
 
         <NavBar mode={'light'}>
           <SegmentedControl
-            values={[VIEW_CALENDAR, VIEW_LIST]}
+            values={views}
             onChange={this.onChangeView}
             className={'viewSwitch'}
+            selectedIndex={views.indexOf(activeView)}
           />
         </NavBar>
       </Div100vh>
