@@ -17,17 +17,17 @@ const initialState = {
     [uuids.p1]: {
       id: uuids.p1,
       title: 'Project 1',
-      color: '#7ebcff'
+      color: '#4379d5'
     },
     [uuids.p2]: {
       id: uuids.p2,
       title: 'Project 2',
-      color: '#6edc88'
+      color: '#41a959'
     },
     [uuids.p3]: {
       id: uuids.p3,
       title: 'Project 3',
-      color: '#f5828e'
+      color: '#be5f5f'
     }
   },
   tasks: {
