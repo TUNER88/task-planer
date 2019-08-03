@@ -28,7 +28,6 @@ const TaskFilter = ({ filter, setFilter, sortOption, setSortOption }) => {
         onChange={setFilter}
       />
       <WingBlank>
-        <p>Sort by:</p>
         <SegmentedControl
           values={optionNames}
           onValueChange={onSelectOption}

@@ -28,7 +28,7 @@ class App extends React.Component {
   state = {
     ...initialState,
     docked: false,
-    activeView: VIEW_TASKS
+    activeView: VIEW_PROJECTS
   }
 
   onChangeView = event => {
@@ -69,7 +69,11 @@ class App extends React.Component {
             </>
           )}
           {calendarActive && <Calendar />}
-          {overviewActive && <div className={'overview'}><Overview /></div>}
+          {overviewActive && (
+            <div className={'overview'}>
+              <Overview />
+            </div>
+          )}
         </div>
 
         <NavBar mode={'light'}>

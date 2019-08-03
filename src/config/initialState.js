@@ -16,15 +16,18 @@ const initialState = {
   projects: {
     [uuids.p1]: {
       id: uuids.p1,
-      title: 'Project 1'
+      title: 'Project 1',
+      color: '#7ebcff'
     },
     [uuids.p2]: {
       id: uuids.p2,
-      title: 'Project 2'
+      title: 'Project 2',
+      color: '#6edc88'
     },
     [uuids.p3]: {
       id: uuids.p3,
-      title: 'Project 3'
+      title: 'Project 3',
+      color: '#f5828e'
     }
   },
   tasks: {
@@ -33,8 +36,8 @@ const initialState = {
       projectId: uuids.p1,
       title: 'Task 1',
       completed: true,
-      startTime: new Date('2019-07-18T03:24:00'),
-      endTime: new Date('2019-07-18T04:24:00'),
+      startTime: new Date('2019-08-05T03:24:00'),
+      endTime: new Date('2019-08-05T04:24:00'),
       notes: 'Line 1\nLine2'
     },
     [uuids.t2]: {
@@ -42,8 +45,8 @@ const initialState = {
       projectId: uuids.p1,
       title: 'Task 2',
       completed: false,
-      startTime: new Date('2019-07-17T03:24:00'),
-      endTime: new Date('2019-07-17T04:24:00')
+      startTime: new Date('2019-08-06T03:24:00'),
+      endTime: new Date('2019-08-06T04:24:00')
     },
     [uuids.t3]: {
       id: uuids.t3,
@@ -56,8 +59,8 @@ const initialState = {
       projectId: uuids.p2,
       title: 'Task 4',
       completed: true,
-      startTime: new Date('2019-07-17T03:24:00'),
-      endTime: new Date('2019-07-17T04:24:00')
+      startTime: new Date('2019-08-05T03:24:00'),
+      endTime: new Date('2019-08-05T04:24:00')
     }
   },
   ui: {

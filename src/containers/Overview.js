@@ -4,11 +4,6 @@ import TaskList from '../components/TaskList'
 import { addTask, toggleNewTaskForm } from '../actions'
 import sortOptions from '../components/TaskFilter/sortOptions'
 
-const getProjectTitle = state => {
-  const { projects, ui } = state
-  return projects[ui.activeProject].title
-}
-
 const sortByStartDate = (a, b) => a.startTime - b.endTime
 
 const sortByTitle = (a, b) => {
@@ -25,13 +20,10 @@ const sortMap = {
 const getVisibleTasks = state => {
   const { taskSortOption } = state.ui
 
-  return Object.values(state.tasks)
-    .sort(sortMap[taskSortOption])
+  return Object.values(state.tasks).sort(sortMap[taskSortOption])
 }
 
 const mapStateToProps = state => ({
-  projectTitle: getProjectTitle(state),
-  projectId: state.ui.activeProject,
   tasks: getVisibleTasks(state),
   isFormVisible: state.ui.showNewTaskForm,
   isListVisible: state.ui.showTaskList

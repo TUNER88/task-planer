@@ -3,12 +3,14 @@ import { List } from 'antd-mobile'
 
 import Progress from '../Progress'
 import DateRow from './DateRow'
+import ColorIndicator from '../ColorIndicator'
 
 const Item = List.Item
 
 const Project = ({
   id,
   title,
+  color,
   selectProject,
   taskCount,
   completedTaskCount,
@@ -21,7 +23,7 @@ const Project = ({
         selectProject(id)
       }}
     >
-      {title}
+      <ColorIndicator color={color} /> {title}{' '}
       <DateRow label="Next task:" date={nextTaskTime} />
       <DateRow label="Project ends:" />
       <Progress completed={completedTaskCount} total={taskCount} />

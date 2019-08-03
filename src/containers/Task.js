@@ -4,7 +4,8 @@ import Task from '../components/Task'
 import { toggleTaskCompletion } from '../actions'
 
 const mapStateToProps = (state, props) => ({
-  ...props
+  ...props,
+  project: state.projects[props.projectId]
 })
 
 const mapDispatchToProps = dispatch => ({

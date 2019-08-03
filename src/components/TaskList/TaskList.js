@@ -36,15 +36,7 @@ const TaskList = ({
       {isListVisible && (
         <List renderHeader={() => projectTitle}>
           {tasks.map(task => (
-            <Task
-              key={task.id}
-              id={task.id}
-              completed={task.completed}
-              title={task.title}
-              startTime={task.startTime}
-              endTime={task.endTime}
-              notes={task.notes}
-            />
+            <Task key={task.id} showProjectTitle={!projectId} {...task} />
           ))}
           <AddTaskButton onClick={toggleNewTaskForm} />
         </List>

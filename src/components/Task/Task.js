@@ -1,7 +1,6 @@
 import React, { useState, Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { Checkbox, List, SwipeAction } from 'antd-mobile'
-
 import { IoMdCreate, IoIosTrash } from 'react-icons/io'
 
 import Header from './Header'
@@ -14,8 +13,10 @@ const Task = ({
   notes,
   title,
   toggleTaskCompletion,
+  showProjectTitle,
   startTime,
-  endTime
+  endTime,
+  project
 }) => {
   const [collapsed, setCollapsed] = useState(true)
 
@@ -68,7 +69,13 @@ const Task = ({
         thumb={<Checkbox onClick={toggle} defaultChecked={completed} />}
         extra={desktopButtons}
       >
-        <Header title={title} startTime={startTime} endTime={endTime} />
+        <Header
+          title={title}
+          project={project}
+          startTime={startTime}
+          endTime={endTime}
+          showProjectTitle={showProjectTitle}
+        />
         {!collapsed && notes && (
           <List.Item.Brief>
             {notes.split('\n').map((item, key) => {
