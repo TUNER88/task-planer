@@ -56,6 +56,7 @@ const Task = ({ addTask, updateTask, projects, projectId, task, onClose }) => {
   }
   const setTitle = title => setData({ ...data, title })
   const setNotes = notes => setData({ ...data, notes })
+  const setProjectId = id => setData({ ...data, projectId: id })
 
   const handleSave = () => {
     const newData = {
@@ -77,6 +78,7 @@ const Task = ({ addTask, updateTask, projects, projectId, task, onClose }) => {
       <ProjectPicker
         projects={projects}
         projectId={data.projectId || projectId}
+        onChange={values => setProjectId(values[0])}
       />
       <DatePicker value={data.startTime} onChange={setStart}>
         <List.Item arrow="horizontal">Start</List.Item>
