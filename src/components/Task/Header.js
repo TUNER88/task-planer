@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Badge, Flex } from 'antd-mobile'
+import { Flex } from 'antd-mobile'
 import { DateTime } from 'luxon'
+
+import Badge from './Badge'
 
 import styles from './Header.module.css'
 
@@ -19,19 +21,7 @@ const Header = ({ title, project, startTime, endTime, showProjectTitle }) => {
       <Flex.Item>
         {title}
         {showProjectTitle && (
-          <Badge
-            text={project.title}
-            style={{
-              marginLeft: 12,
-              padding: '0 3px',
-              color: project.color,
-              backgroundColor: '#fff',
-              borderRadius: 2,
-              borderStyle: 'solid',
-              borderWidth: '1px',
-              borderColor: project.color
-            }}
-          />
+          <Badge text={project.title} color={project.color} />
         )}
       </Flex.Item>
       {startTime && (

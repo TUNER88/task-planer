@@ -28,7 +28,7 @@ class App extends React.Component {
   state = {
     ...initialState,
     docked: false,
-    activeView: VIEW_PROJECTS
+    activeView: VIEW_TASKS
   }
 
   onChangeView = event => {
