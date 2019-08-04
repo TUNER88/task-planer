@@ -22,7 +22,7 @@ const REPEAT_MODE_MONTHLY = 3
 
 const defaultData = {
   startTime: new Date(),
-  duration: DateTime.local()
+  endTime: DateTime.local()
     .set({ hour: 1, minute: 0 })
     .toJSDate()
 }
@@ -51,8 +51,8 @@ const Task = ({ addTask, updateTask, projects, projectId, task, onClose }) => {
   ]
 
   const setStart = startTime => setData({ ...data, startTime })
-  const setDuration = duration => {
-    return setData({ ...data, duration })
+  const setEndTime = endTime => {
+    return setData({ ...data, endTime })
   }
   const setTitle = title => setData({ ...data, title })
   const setNotes = notes => setData({ ...data, notes })
@@ -83,8 +83,8 @@ const Task = ({ addTask, updateTask, projects, projectId, task, onClose }) => {
       <DatePicker value={data.startTime} onChange={setStart}>
         <List.Item arrow="horizontal">Start</List.Item>
       </DatePicker>
-      <DatePicker mode={'time'} value={data.duration} onChange={setDuration}>
-        <List.Item arrow="horizontal">Duration</List.Item>
+      <DatePicker value={data.endTime} onChange={setEndTime}>
+        <List.Item arrow="horizontal">End</List.Item>
       </DatePicker>
       <Picker data={repeatModes} cols={1} minuteStep={5}>
         <List.Item arrow="horizontal">Repeat</List.Item>
