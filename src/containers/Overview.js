@@ -18,9 +18,13 @@ const sortMap = {
 }
 
 const getVisibleTasks = state => {
-  const { taskSortOption } = state.ui
+  const { taskFilter, taskSortOption } = state.ui
 
-  return Object.values(state.tasks).sort(sortMap[taskSortOption])
+  return Object.values(state.tasks)
+    .filter(t => {
+      return t.title.includes(taskFilter)
+    })
+    .sort(sortMap[taskSortOption])
 }
 
 const mapStateToProps = state => ({
