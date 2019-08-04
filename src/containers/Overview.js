@@ -28,9 +28,7 @@ const getVisibleTasks = state => {
 }
 
 const mapStateToProps = state => ({
-  tasks: getVisibleTasks(state),
-  isFormVisible: state.ui.showNewTaskForm,
-  isListVisible: state.ui.showTaskList
+  tasks: getVisibleTasks(state)
 })
 
 const mapDispatchToProps = dispatch => ({

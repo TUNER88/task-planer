@@ -65,8 +65,6 @@ const initialState = {
   },
   ui: {
     activeProject: uuids.p1,
-    showTaskList: true,
-    showNewTaskForm: false,
     taskFilter: '',
     taskSortOption: taskSortOptions.NAME
   }
