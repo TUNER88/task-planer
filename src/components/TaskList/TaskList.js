@@ -7,17 +7,24 @@ import Task from '../../containers/Task'
 import TaskForm from '../../containers/Forms/Task'
 import TaskFilter from '../../containers/TaskFilter'
 
-const TaskList = ({ addTask, projectId, projectTitle, tasks }) => {
+const TaskList = ({ addTask, projectId, projectTitle, tasks, removeTask }) => {
   const [isFormVisible, setFormVisibility] = useState(false)
+  const [taskToEdit, setTaskToEdit] = useState(null)
 
   const renderNewForm = () => {
     return (
       <TaskForm
+        task={taskToEdit}
         projectId={projectId}
         addTask={addTask}
         onClose={() => setFormVisibility(false)}
       />
     )
+  }
+
+  const onEdit = task => {
+    setTaskToEdit(task)
+    setFormVisibility(true)
   }
 
   if (isFormVisible) {
@@ -29,7 +36,13 @@ const TaskList = ({ addTask, projectId, projectTitle, tasks }) => {
       <TaskFilter />
       <List renderHeader={() => projectTitle}>
         {tasks.map(task => (
-          <Task key={task.id} showProjectTitle={!projectId} {...task} />
+          <Task
+            key={task.id}
+            onEdit={() => onEdit(task)}
+            onDelete={() => removeTask(task.id)}
+            showProjectTitle={!projectId}
+            {...task}
+          />
         ))}
         <AddTaskButton onClick={() => setFormVisibility(true)} />
       </List>

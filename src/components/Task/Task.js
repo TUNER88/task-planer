@@ -8,6 +8,8 @@ const Task = ({
   id,
   completed,
   notes,
+  onEdit,
+  onDelete,
   title,
   toggleTaskCompletion,
   showProjectTitle,
@@ -31,11 +33,6 @@ const Task = ({
 
   const getArrowDirection = () => (collapsed ? 'down' : 'up')
 
-  const remove = () => console.log('remove')
-  const edit = (e, f) => {
-    console.log('edit', e, e.target)
-  }
-
   return (
     <SwipeAction
       style={{ backgroundColor: 'gray' }}
@@ -43,12 +40,12 @@ const Task = ({
       right={[
         {
           text: 'Edit',
-          onPress: edit,
+          onPress: onEdit,
           style: { backgroundColor: '#ddd', color: 'white' }
         },
         {
           text: 'Delete',
-          onPress: remove,
+          onPress: onDelete,
           style: { backgroundColor: '#F4333C', color: 'white' }
         }
       ]}
@@ -84,7 +81,9 @@ const Task = ({
 
 Task.propTypes = {
   title: PropTypes.string,
-  completed: PropTypes.bool
+  completed: PropTypes.bool,
+  onEdit: PropTypes.func,
+  onDelete: PropTypes.func
 }
 
 Task.displayName = 'Task'

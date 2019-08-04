@@ -13,6 +13,11 @@ export const updateTask = data => ({
   data
 })
 
+export const removeTask = id => ({
+  type: 'REMOVE_TASK',
+  id
+})
+
 export const setTaskFilter = search => ({
   type: 'SET_TASK_FILTER',
   search

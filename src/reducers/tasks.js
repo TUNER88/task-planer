@@ -27,6 +27,10 @@ const ui = (state = {}, action) => {
           ...action.data
         }
       }
+    case 'REMOVE_TASK':
+      const newState = { ...state }
+      delete newState[action.id]
+      return newState
     default:
       return state
   }

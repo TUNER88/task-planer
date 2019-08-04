@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
 import TaskList from '../components/TaskList'
-import { addTask } from '../actions'
+import { addTask, removeTask } from '../actions'
 import sortOptions from '../components/TaskFilter/sortOptions'
 
 const getProjectTitle = state => {
@@ -42,7 +42,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  addTask: data => dispatch(addTask(data))
+  addTask: data => dispatch(addTask(data)),
+  removeTask: data => dispatch(removeTask(data))
 })
 
 export default connect(
