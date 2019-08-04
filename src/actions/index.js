@@ -8,6 +8,11 @@ export const addTask = data => ({
   data
 })
 
+export const updateTask = data => ({
+  type: 'UPDATE_TASK',
+  data
+})
+
 export const setTaskFilter = search => ({
   type: 'SET_TASK_FILTER',
   search
@@ -26,8 +31,4 @@ export const selectProject = id => ({
 export const toggleTaskCompletion = id => ({
   type: 'TOGGLE_TASK_COMPLETION',
   id
-})
-
-export const toggleNewTaskForm = () => ({
-  type: 'TOGGLE_NEW_TASK_FORM'
 })

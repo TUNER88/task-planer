@@ -20,6 +20,13 @@ const ui = (state = {}, action) => {
           ...action.data
         }
       }
+    case 'UPDATE_TASK':
+      return {
+        ...state,
+        [action.data.id]: {
+          ...action.data
+        }
+      }
     default:
       return state
   }

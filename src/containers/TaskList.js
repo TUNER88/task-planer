@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
 import TaskList from '../components/TaskList'
-import { addTask, toggleNewTaskForm } from '../actions'
+import { addTask } from '../actions'
 import sortOptions from '../components/TaskFilter/sortOptions'
 
 const getProjectTitle = state => {
@@ -38,14 +38,11 @@ const getVisibleTasks = state => {
 const mapStateToProps = state => ({
   projectTitle: getProjectTitle(state),
   projectId: state.ui.activeProject,
-  tasks: getVisibleTasks(state),
-  isFormVisible: state.ui.showNewTaskForm,
-  isListVisible: state.ui.showTaskList
+  tasks: getVisibleTasks(state)
 })
 
 const mapDispatchToProps = dispatch => ({
-  addTask: data => dispatch(addTask(data)),
-  toggleNewTaskForm: () => dispatch(toggleNewTaskForm())
+  addTask: data => dispatch(addTask(data))
 })
 
 export default connect(

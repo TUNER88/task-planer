@@ -15,12 +15,6 @@ const ui = (state = [], action) => {
         ...state,
         taskFilter: action.search
       }
-    case 'TOGGLE_NEW_TASK_FORM':
-      return {
-        ...state,
-        showNewTaskForm: !state.showNewTaskForm,
-        showTaskList: !state.showTaskList
-      }
     default:
       return state
   }

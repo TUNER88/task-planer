@@ -1,27 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { List } from 'antd-mobile'
 
 import AddTaskButton from './AddTaskButton'
 import Task from '../../containers/Task'
-import TaskForm from '../Forms/Task'
+import TaskForm from '../../containers/Forms/Task'
 import TaskFilter from '../../containers/TaskFilter'
 
-const TaskList = ({
-  addTask,
-  projectId,
-  projectTitle,
-  toggleNewTaskForm,
-  isFormVisible,
-  isListVisible,
-  tasks
-}) => {
+const TaskList = ({ addTask, projectId, projectTitle, tasks }) => {
+  const [isFormVisible, setFormVisibility] = useState(false)
+
   const renderNewForm = () => {
     return (
       <TaskForm
         projectId={projectId}
         addTask={addTask}
-        toggleNewTaskForm={toggleNewTaskForm}
+        onClose={() => setFormVisibility(false)}
       />
     )
   }
@@ -33,23 +27,18 @@ const TaskList = ({
   return (
     <>
       <TaskFilter />
-      {isListVisible && (
-        <List renderHeader={() => projectTitle}>
-          {tasks.map(task => (
-            <Task key={task.id} showProjectTitle={!projectId} {...task} />
-          ))}
-          <AddTaskButton onClick={toggleNewTaskForm} />
-        </List>
-      )}
+      <List renderHeader={() => projectTitle}>
+        {tasks.map(task => (
+          <Task key={task.id} showProjectTitle={!projectId} {...task} />
+        ))}
+        <AddTaskButton onClick={() => setFormVisibility(true)} />
+      </List>
     </>
   )
 }
 
 TaskList.propTypes = {
-  isFormVisible: PropTypes.bool,
-  isListVisible: PropTypes.bool,
   addTask: PropTypes.func,
-  toggleNewTaskForm: PropTypes.func,
   tasks: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string,

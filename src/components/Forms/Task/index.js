@@ -11,6 +11,8 @@ import {
   TextareaItem
 } from 'antd-mobile'
 
+import ProjectPicker from './ProjectPicker'
+
 const Item = List.Item
 
 const REPEAT_MODE_NONE = 0
@@ -18,13 +20,16 @@ const REPEAT_MODE_DAILY = 1
 const REPEAT_MODE_WEEKLY = 2
 const REPEAT_MODE_MONTHLY = 3
 
-const Task = ({ addTask, projectId, toggleNewTaskForm }) => {
-  const [data, setData] = useState({
-    startDate: new Date(),
-    duration: DateTime.local()
-      .set({ hour: 1, minute: 0 })
-      .toJSDate()
-  })
+const defaultData = {
+  startTime: new Date(),
+  duration: DateTime.local()
+    .set({ hour: 1, minute: 0 })
+    .toJSDate()
+}
+
+const Task = ({ addTask, updateTask, projects, projectId, task, onClose }) => {
+  const [data, setData] = useState(task || defaultData)
+  const isEdit = Boolean(task)
 
   const repeatModes = [
     {
@@ -45,7 +50,7 @@ const Task = ({ addTask, projectId, toggleNewTaskForm }) => {
     }
   ]
 
-  const setStart = startDate => setData({ ...data, startDate })
+  const setStart = startTime => setData({ ...data, startTime })
   const setDuration = duration => {
     return setData({ ...data, duration })
   }
@@ -53,17 +58,27 @@ const Task = ({ addTask, projectId, toggleNewTaskForm }) => {
   const setNotes = notes => setData({ ...data, notes })
 
   const handleSave = () => {
-    addTask({
+    const newData = {
       ...data,
-      projectId
-    })
-    toggleNewTaskForm()
+      projectId: data.projectId || projectId
+    }
+
+    isEdit ? updateTask(newData) : addTask(newData)
+    onClose()
+  }
+
+  const renderHeader = () => {
+    return isEdit ? 'Edit' : 'New Task'
   }
 
   return (
-    <List renderHeader={() => 'New Task'}>
+    <List renderHeader={renderHeader}>
       <InputItem value={data.title} placeholder="Title" onChange={setTitle} />
-      <DatePicker value={data.startDate} onChange={setStart}>
+      <ProjectPicker
+        projects={projects}
+        projectId={data.projectId || projectId}
+      />
+      <DatePicker value={data.startTime} onChange={setStart}>
         <List.Item arrow="horizontal">Start</List.Item>
       </DatePicker>
       <DatePicker mode={'time'} value={data.duration} onChange={setDuration}>
@@ -84,7 +99,9 @@ const Task = ({ addTask, projectId, toggleNewTaskForm }) => {
           Save
         </Button>
         <Button
-          onClick={toggleNewTaskForm}
+          onClick={() => {
+            onClose()
+          }}
           size="small"
           inline
           style={{ marginLeft: '2.5px' }}
@@ -98,7 +115,9 @@ const Task = ({ addTask, projectId, toggleNewTaskForm }) => {
 
 Task.propTypes = {
   projectId: PropTypes.string,
-  addTask: PropTypes.func
+  addTask: PropTypes.func,
+  onClose: PropTypes.func,
+  task: PropTypes.object
 }
 
 Task.displayName = 'Task'

@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
 import TaskList from '../components/TaskList'
-import { addTask, toggleNewTaskForm } from '../actions'
+import { addTask } from '../actions'
 import sortOptions from '../components/TaskFilter/sortOptions'
 
 const sortByStartDate = (a, b) => a.startTime - b.endTime
@@ -34,8 +34,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  addTask: data => dispatch(addTask(data)),
-  toggleNewTaskForm: () => dispatch(toggleNewTaskForm())
+  addTask: data => dispatch(addTask(data))
 })
 
 export default connect(
