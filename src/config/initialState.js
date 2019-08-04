@@ -55,7 +55,9 @@ const initialState = {
       id: uuids.t3,
       projectId: uuids.p1,
       title: 'Task 2',
-      completed: true
+      completed: true,
+      startTime: new Date('2019-08-07T01:54:00'),
+      endTime: new Date('2019-08-07T02:34:00')
     },
     [uuids.t4]: {
       id: uuids.t4,
