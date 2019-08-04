@@ -37,7 +37,7 @@ const initialState = {
     [uuids.t1]: {
       id: uuids.t1,
       projectId: uuids.p1,
-      title: 'Task 1',
+      title: 'Task 4',
       completed: true,
       startTime: new Date('2019-08-05T03:24:00'),
       endTime: new Date('2019-08-05T04:24:00'),
@@ -46,7 +46,7 @@ const initialState = {
     [uuids.t2]: {
       id: uuids.t2,
       projectId: uuids.p1,
-      title: 'Task 2',
+      title: 'Task 3',
       completed: false,
       startTime: new Date('2019-08-06T03:10:00'),
       endTime: new Date('2019-08-06T04:20:00')
@@ -54,13 +54,13 @@ const initialState = {
     [uuids.t3]: {
       id: uuids.t3,
       projectId: uuids.p1,
-      title: 'Task 3',
+      title: 'Task 2',
       completed: true
     },
     [uuids.t4]: {
       id: uuids.t4,
       projectId: uuids.p2,
-      title: 'Task 4',
+      title: 'Task 1',
       completed: true,
       startTime: new Date('2019-08-05T03:24:00'),
       endTime: new Date('2019-08-05T05:24:00')
@@ -69,7 +69,7 @@ const initialState = {
     [uuids.t5]: {
       id: uuids.t5,
       projectId: uuids.p3,
-      title: 'Task 5',
+      title: 'Task 7',
       completed: false,
       startTime: new Date('2019-08-07T03:24:00'),
       endTime: new Date('2019-08-07T04:24:00')
@@ -85,7 +85,7 @@ const initialState = {
     [uuids.t7]: {
       id: uuids.t7,
       projectId: uuids.p3,
-      title: 'Task 7',
+      title: 'Task 5',
       completed: false,
       startTime: new Date('2019-08-09T01:20:00'),
       endTime: new Date('2019-08-09T05:20:00')
