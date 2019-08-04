@@ -1,3 +1,5 @@
+import { getRandomColor } from '../utils'
+
 const uuid = require('uuid/v1')
 
 const projects = (state = [], action) => {
@@ -8,6 +10,7 @@ const projects = (state = [], action) => {
         ...state,
         [newUuid]: {
           id: newUuid,
+          color: getRandomColor(),
           ...action.data
         }
       }
